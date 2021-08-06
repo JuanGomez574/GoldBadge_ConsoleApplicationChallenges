@@ -22,10 +22,10 @@ namespace ChallengeOne_Console
             while (keepRunning)
             {
                 // Display our options to the user
-                Console.WriteLine("Select a menu option:\n" +
-                    "1. Create New Menu Item\n" +
-                    "2. View All Menu Items\n" +
-                    "3. Delete Existing Menu Item\n" +
+                Console.WriteLine("Select an option:\n" +
+                    "1. Create New Cafe Menu Item\n" +
+                    "2. View All Items In Cafe Menu\n" +
+                    "3. Delete Existing Cafe Menu Item\n" +
                     "4. Exit");
 
                 // Get the user's input
@@ -70,7 +70,7 @@ namespace ChallengeOne_Console
             Console.WriteLine("Enter the name of the meal:");
             newItem.Name = Console.ReadLine();
             //Description
-            Console.WriteLine("Enter the description for the meal:");
+            Console.WriteLine("Enter the description for menu item:");
             newItem.Description = Console.ReadLine();
             //List of ingredients
             List<string> ingredients = new List<string>();
@@ -137,7 +137,7 @@ namespace ChallengeOne_Console
             DisplayAllItems();
 
             // Get the menu item they want to remove
-            Console.WriteLine("\nEnter the meal number of the item you'd like to remove:");
+            Console.WriteLine("\nEnter the meal number of the menu item you'd like to remove:");
 
             int input = int.Parse(Console.ReadLine());
 

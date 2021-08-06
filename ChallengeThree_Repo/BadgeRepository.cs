@@ -78,19 +78,6 @@ namespace ChallengeThree_Repository
             return null;
 
         }
-        //public string RemoveDoorFromBadge(string doorName)
-        //{
-        //    foreach (var door in _badgeDictionary.Values)
-        //    {
-        //        if (door.Contains(doorName))
-        //        {
-        //            door.Remove(doorName);
-
-        //        }
-        //    }
-        //    return null;
-
-        //}
 
     }
 }

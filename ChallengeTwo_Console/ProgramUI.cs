@@ -57,7 +57,7 @@ namespace ChallengeTwo_Console
                         break;
                 }
 
-                Console.WriteLine("Please press any key to continue...");
+                Console.WriteLine("\nPlease press any key to continue...");
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -92,6 +92,7 @@ namespace ChallengeTwo_Console
                 $"IsValid: {nextClaim.IsValid}");
             Console.WriteLine("\nDo you want to deal with claim now(y/n)?");
             string answer = Console.ReadLine().ToLower();
+            Console.Clear();
 
             if (answer == "y")
             {
@@ -124,6 +125,7 @@ namespace ChallengeTwo_Console
             //ID
             Console.WriteLine("Enter the ID of the claim:");
             newClaim.ClaimID = int.Parse(Console.ReadLine());
+            Console.Clear();
             //Type
             Console.WriteLine("Enter the claim type number:\n" +
                 "1. Car\n" +
@@ -132,12 +134,15 @@ namespace ChallengeTwo_Console
             string claimTypeAsString = Console.ReadLine();
             int claimTypeAsInt = int.Parse(claimTypeAsString);
             newClaim.TypeOfClaim = (ClaimType)claimTypeAsInt;
+            Console.Clear();
             //Description
             Console.WriteLine("Enter a description for the claim:");
             newClaim.Description = Console.ReadLine();
+            Console.Clear();
             //Amount of Damage
             Console.WriteLine("Enter the amount of the claim:");
             newClaim.ClaimAmount = decimal.Parse(Console.ReadLine());
+            Console.Clear();
             //Date of Accident
             Console.WriteLine("Enter the month of the accident: ");
             int month = int.Parse(Console.ReadLine());
@@ -145,6 +150,7 @@ namespace ChallengeTwo_Console
             int day = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter the year of the accident: ");
             int year = int.Parse(Console.ReadLine());
+            Console.Clear();
 
             DateTime inputtedDate = new DateTime(year, month, day);
             newClaim.DateOfClaim = inputtedDate;
@@ -155,12 +161,14 @@ namespace ChallengeTwo_Console
             int dayOfClaim = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter the year the claim was filed: ");
             int yearOfClaim = int.Parse(Console.ReadLine());
+            Console.Clear();
 
             DateTime dateOfClaim = new DateTime(yearOfClaim, monthOfClaim, dayOfClaim);
             newClaim.DateOfClaim = dateOfClaim;
             //Is Claim Valid?
             Console.WriteLine("Is the claim valid? (y/n)");
             string validClaimString = Console.ReadLine().ToLower();
+            Console.Clear();
 
             if (validClaimString == "y")
             {
@@ -170,6 +178,7 @@ namespace ChallengeTwo_Console
             {
                 newClaim.IsValid = false;
             }
+            Console.WriteLine("Claim has been entered in the queue.");
 
             _claimRepo.AddClaimToQueue(newClaim);
         }
@@ -183,7 +192,7 @@ namespace ChallengeTwo_Console
             // Create another claim object
             Claim thirdClaim = new Claim(3, ClaimType.Theft, "Stolen pancakes.", 4.00m, new DateTime(2018, 4, 27), new DateTime(2018, 6, 1), false);
 
-            //Commented out code below unneccessary because the queue is in the repo so don't need to create new queue of claims.
+            //Commented out code below; it's unneccessary because the queue is in the repo so don't need to create new queue of claims.
             // Create a new queue and then add all the claims created above to the queue
             //Queue<Claim> queue = new Queue<Claim>();
             //queue.Enqueue(firstClaim);

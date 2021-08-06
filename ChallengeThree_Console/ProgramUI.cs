@@ -29,7 +29,7 @@ namespace ChallengeThree_Console
                     "1. Add a badge\n" +
                     "2. Edit a badge\n" +
                     "3. List all badges\n" +
-                    "4. View door access by badge\n" +
+                    "4. View door access by badge ID\n" +
                     "5. Exit");
 
                 // Get the user's input
@@ -51,7 +51,7 @@ namespace ChallengeThree_Console
                         DisplayAllBadges();
                         break;
                     case "4":
-                        GetDoorsByBadgeID();
+                        DisplayDoorsOnABadge();
                         break;
                     case "5":
                         // Exit
@@ -81,6 +81,8 @@ namespace ChallengeThree_Console
             Console.WriteLine("List a door that it needs access to:");
             string firstDoor = Console.ReadLine();
             doors.Add(firstDoor);
+            newBadge.DoorNames = doors;
+            _badgeRepo.AddBadgeToDictionary(newBadge);
 
             bool keepRunning = true;
             while (keepRunning)
@@ -106,8 +108,6 @@ namespace ChallengeThree_Console
                     Console.WriteLine("Invalid answer. Try again.");
                 }
             }
-            //newBadge.DoorNames = doors;
-            //_badgeRepo.AddBadgeToDictionary(newBadge);
         }
         private void DisplayAllBadges()
         {
@@ -119,17 +119,18 @@ namespace ChallengeThree_Console
                 Console.Write($"\n{kvp.Key,-15}");
                 foreach (var value in kvp.Value)
                 {
-                    Console.Write($"{value.TrimEnd(',')},");
-
+                    Console.Write($"{value}, ");
                 }
             }
         }
         private void UpdateABadge()
         {
-            Console.WriteLine("What is the badge number to update?");
+            DisplayAllBadges();
+            Console.WriteLine("\nWhat is the badge number to update?");
             int id = int.Parse(Console.ReadLine());
 
             List<string> retrievedDoors = _badgeRepo.GetDoorsByBadgeID(id);
+            Console.Clear();
 
             Console.Write($"{id} has access to doors ");
             foreach (var door in retrievedDoors)
@@ -224,16 +225,18 @@ namespace ChallengeThree_Console
 
 
         }
-        private void GetDoorsByBadgeID()
+        private void DisplayDoorsOnABadge()
         {
-            Console.WriteLine("What is the badge number to update?");
+            
+            Console.WriteLine("Enter a badge number to see what doors it has access to:");
             int id = int.Parse(Console.ReadLine());
 
             List<string> retrievedDoors = _badgeRepo.GetDoorsByBadgeID(id);
-
+            Console.Clear();
+            Console.Write($"{id} has access to doors: ");
             foreach (var door in retrievedDoors)
             {
-                Console.Write($"{door} ");
+                Console.Write($"{door}, ");
             }
         }
         private void SeedBadgeDictionary()
@@ -248,6 +251,7 @@ namespace ChallengeThree_Console
             string doorTwo = "A7";
             newDoors.Add(doorTwo);
             newBadge.DoorNames = newDoors;
+            newBadge.BadgeName = "Developer";
 
             _badgeRepo.AddBadgeToDictionary(newBadge);
 
@@ -266,6 +270,7 @@ namespace ChallengeThree_Console
             doorsForSecondBadge.Add(b2Door);
 
             secondBadge.DoorNames = doorsForSecondBadge;
+            secondBadge.BadgeName = "Developer";
 
             _badgeRepo.AddBadgeToDictionary(secondBadge);
 

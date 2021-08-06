@@ -56,16 +56,6 @@ namespace ChallengeOne_Tests
             //Assert
             Assert.IsNotNull(items);
         }
-        [TestMethod]
-        public void GetItemList_ShouldReturnList()
-        {
-            //Arrange
-            //TestInitialize
-
-            //Act
-            List<MenuItem> items = _repo.GetItemList();
-
-        }
         // Delete Method
         [TestMethod]
         public void DeleteItem_ShouldReturnTrue()

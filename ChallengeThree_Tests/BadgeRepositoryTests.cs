@@ -49,14 +49,6 @@ namespace ChallengeThree_Tests
             //Assert
             Assert.IsNotNull(doorsFromDictionary);
 
-            //repository.AddBadgeToDictionary(badge);
-
-            //Dictionary<int, List<string>> badgeDictionary = repository.GetBadgeDictionary();
-            //Dictionary<int, List<string>> secondBadgeDictionary = _repo.GetBadgeDictionary();
-
-            ////Assert
-            //CollectionAssert.Equals(badgeDictionary, secondBadgeDictionary);
-
         }
         //Read
         [TestMethod]
